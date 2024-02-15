@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://drtekcwtpj24x"]
+[gd_scene load_steps=7 format=3 uid="uid://drtekcwtpj24x"]
 
 [ext_resource type="PackedScene" uid="uid://bx8sp17yn608h" path="res://prefabs/Diver.tscn" id="1_v5l4s"]
 [ext_resource type="Script" path="res://source/Audio.gd" id="2_nyn1x"]
 [ext_resource type="Script" path="res://source/Spawner.gd" id="3_lnriq"]
+[ext_resource type="Script" path="res://resources/SpawnTime.gd" id="4_j086n"]
+[ext_resource type="PackedScene" uid="uid://b4kf862awclft" path="res://prefabs/Pufferfish.tscn" id="5_scsin"]
+
+[sub_resource type="Resource" id="Resource_hvmv2"]
+script = ExtResource("4_j086n")
+spawnBeat = 1.0
+lane = 1
 
 [node name="Main" type="Node2D"]
 
@@ -12,11 +19,6 @@
 color = Color(0.156863, 0.658824, 1, 1)
 polygon = PackedVector2Array(0, 0, 640, 0, 640, 360, 0, 360)
 
-[node name="Divers" type="Node2D" parent="."]
-
-[node name="Diver" parent="Divers" instance=ExtResource("1_v5l4s")]
-inputName = "\"diver1_attack\""
-
 [node name="Audio" type="Node2D" parent="."]
 script = ExtResource("2_nyn1x")
 
@@ -24,3 +26,17 @@ script = ExtResource("2_nyn1x")
 
 [node name="Spawner" type="Node2D" parent="."]
 script = ExtResource("3_lnriq")
+spawnTimes = Array[ExtResource("4_j086n")]([SubResource("Resource_hvmv2")])
+
+[node name="Pufferfish" parent="." instance=ExtResource("5_scsin")]
+position = Vector2(207, 82)
+scale = Vector2(5, 5)
+
+[node name="Lanes" type="Node2D" parent="."]
+
+[node name="Lane1" type="Node2D" parent="Lanes"]
+
+[node name="Diver" parent="Lanes/Lane1" instance=ExtResource("1_v5l4s")]
+inputName = "diver1_attack"
+
+[connection signal="BeatIsHappening" from="Audio" to="Spawner" method="trySpawnEnemy"]

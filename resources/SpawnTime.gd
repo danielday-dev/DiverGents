@@ -1,5 +1,5 @@
 extends Resource
-class_name SpawnTimes
+class_name SpawnTime
 
 @export var creatureType : PackedScene;
 @export var spawnBeat : float;

@@ -1,28 +1,53 @@
-[gd_scene load_steps=5 format=3 uid="uid://bx8sp17yn608h"]
+[gd_scene load_steps=8 format=3 uid="uid://bx8sp17yn608h"]
 
 [ext_resource type="Script" path="res://source/Diver.gd" id="1_c1fay"]
-[ext_resource type="Texture2D" uid="uid://d1akbtq8fbw8d" path="res://resources/DefaultTexture.png" id="2_aj3ob"]
+[ext_resource type="Texture2D" uid="uid://btu65j3l1b3lu" path="res://resources/DiverSpritesheet.png" id="2_e0hld"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7dsf3"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7yjp"]
+size = Vector2(153.322, 255.6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2syej"]
+atlas = ExtResource("2_e0hld")
+region = Rect2(176, 0, 176, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r067n"]
+atlas = ExtResource("2_e0hld")
+region = Rect2(352, 0, 176, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7t8b3"]
+atlas = ExtResource("2_e0hld")
+region = Rect2(528, 0, 176, 256)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rn7jm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_aj3ob")
+"texture": SubResource("AtlasTexture_2syej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r067n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7t8b3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r067n")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 4.0
 }]
 
 [node name="Diver" type="CharacterBody2D"]
 script = ExtResource("1_c1fay")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_7dsf3")
+position = Vector2(-0.303575, 0.499997)
+scale = Vector2(1.02143, 0.833333)
+shape = SubResource("RectangleShape2D_w7yjp")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_rn7jm")
+frame_progress = 0.479504
 
 [node name="AttackNoise" type="AudioStreamPlayer" parent="."]

@@ -1,7 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4kf862awclft"]
+[gd_scene load_steps=9 format=3 uid="uid://b4kf862awclft"]
 
 [ext_resource type="Texture2D" uid="uid://d1akbtq8fbw8d" path="res://resources/DefaultTexture.png" id="1_co365"]
-[ext_resource type="Script" path="res://source/HitboxComponent.gd" id="2_hbsjo"]
+[ext_resource type="Script" path="res://source/Pufferfish.gd" id="1_o7bln"]
+[ext_resource type="Shader" uid="uid://cnyw7jcl21jg" path="res://resources/PufferfishWiggle.tres" id="2_7j2qo"]
+[ext_resource type="Script" path="res://source/FishHitbox.gd" id="2_hbsjo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1fbfp"]
+shader = ExtResource("2_7j2qo")
+shader_parameter/Wavelength = 0.7
+shader_parameter/Height = 3.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w202p"]
 animations = [{
@@ -16,14 +23,21 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fgh2k"]
 
-[node name="Pufferfish" type="Node2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pjsgq"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Pufferfish" type="CharacterBody2D"]
+script = ExtResource("1_o7bln")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+material = SubResource("ShaderMaterial_1fbfp")
 sprite_frames = SubResource("SpriteFrames_w202p")
 
-[node name="HitboxComponent" type="Area2D" parent="."]
+[node name="FishHitbox" type="Area2D" parent="."]
 script = ExtResource("2_hbsjo")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+[node name="Hitbox" type="CollisionShape2D" parent="FishHitbox"]
 shape = SubResource("CapsuleShape2D_fgh2k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_pjsgq")
