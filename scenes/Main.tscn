@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://drtekcwtpj24x"]
+
+[ext_resource type="PackedScene" uid="uid://bx8sp17yn608h" path="res://prefabs/Diver.tscn" id="1_v5l4s"]
+[ext_resource type="Script" path="res://source/Audio.gd" id="2_nyn1x"]
+[ext_resource type="Script" path="res://source/Spawner.gd" id="3_lnriq"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Environment" type="Node2D" parent="."]
+
+[node name="Background" type="Polygon2D" parent="Environment"]
+color = Color(0.156863, 0.658824, 1, 1)
+polygon = PackedVector2Array(0, 0, 640, 0, 640, 360, 0, 360)
+
+[node name="Divers" type="Node2D" parent="."]
+
+[node name="Diver" parent="Divers" instance=ExtResource("1_v5l4s")]
+inputName = "\"diver1_attack\""
+
+[node name="Audio" type="Node2D" parent="."]
+script = ExtResource("2_nyn1x")
+
+[node name="Music" type="AudioStreamPlayer" parent="Audio"]
+
+[node name="Spawner" type="Node2D" parent="."]
+script = ExtResource("3_lnriq")

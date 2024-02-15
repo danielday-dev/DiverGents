@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4kf862awclft"]
+
+[ext_resource type="Texture2D" uid="uid://d1akbtq8fbw8d" path="res://resources/DefaultTexture.png" id="1_co365"]
+[ext_resource type="Script" path="res://source/HitboxComponent.gd" id="2_hbsjo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w202p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_co365")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fgh2k"]
+
+[node name="Pufferfish" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_w202p")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+script = ExtResource("2_hbsjo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CapsuleShape2D_fgh2k")
