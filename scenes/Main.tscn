@@ -17,7 +17,7 @@ lane = 0
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="Background" type="Polygon2D" parent="Environment"]
-color = Color(0.156863, 0.658824, 1, 1)
+color = Color(0, 0.258824, 0.831373, 1)
 polygon = PackedVector2Array(0, 0, 640, 0, 640, 360, 0, 360)
 
 [node name="AudioController" type="Node2D" parent="." node_paths=PackedStringArray("Enemies")]

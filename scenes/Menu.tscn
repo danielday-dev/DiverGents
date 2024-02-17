@@ -21,7 +21,7 @@ shader_parameter/Height = 0.1
 
 [sub_resource type="Curve2D" id="Curve2D_xvumd"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 87, 126, 0, 0, 0, 0, 389, 51, 0, 0, 0, 0, 543, 84, 0, 0, 0, 0, 316, 394)
+"points": PackedVector2Array(0, 0, 0, 0, 87, 126, 0, 0, 0, 0, 389, 51, 0, 0, 0, 0, 543, 84, 0, 0, 0, 0, 315, 443)
 }
 point_count = 4
 
@@ -41,18 +41,21 @@ animations = [{
 }]
 
 [node name="Menu" type="Node2D"]
+
+[node name="OscillatingParts" type="Node2D" parent="."]
 script = ExtResource("1_qbssx")
 waveHeight = 20.0
 
-[node name="Background" type="Polygon2D" parent="."]
+[node name="Background" type="Polygon2D" parent="OscillatingParts"]
 material = SubResource("ShaderMaterial_e0j20")
-scale = Vector2(1, 1.09678)
+position = Vector2(0, -36)
+scale = Vector2(1, 1.2)
 color = Color(0.156863, 0.658824, 1, 1)
 texture = SubResource("PlaceholderTexture2D_xtdie")
 polygon = PackedVector2Array(0, 0, 640, 0, 640, 360, 0, 360)
 uv = PackedVector2Array(0, 0, 1, 0, 1, 1, 0, 1)
 
-[node name="StartButton" type="Button" parent="."]
+[node name="StartButton" type="Button" parent="OscillatingParts"]
 offset_left = 322.0
 offset_top = 207.0
 offset_right = 370.0
@@ -60,25 +63,25 @@ offset_bottom = 244.0
 text = "Start"
 script = ExtResource("3_hifq6")
 
-[node name="Log" type="Sprite2D" parent="."]
-position = Vector2(107, 163)
+[node name="Log" type="Sprite2D" parent="OscillatingParts"]
+position = Vector2(109, 142)
 scale = Vector2(0.589249, 0.537037)
 texture = ExtResource("4_aoxpq")
 
-[node name="DiverPath" type="Path2D" parent="."]
+[node name="DiverPath" type="Path2D" parent="OscillatingParts"]
 curve = SubResource("Curve2D_xvumd")
 
-[node name="PathFollow" type="PathFollow2D" parent="DiverPath"]
+[node name="PathFollow" type="PathFollow2D" parent="OscillatingParts/DiverPath"]
 position = Vector2(87, 126)
 rotation = -0.24342
 rotates = false
 loop = false
 
-[node name="MenuDiver" type="CharacterBody2D" parent="DiverPath/PathFollow"]
+[node name="MenuDiver" type="CharacterBody2D" parent="OscillatingParts/DiverPath/PathFollow"]
 script = ExtResource("6_1ojvo")
 
-[node name="MenuDiverSprite" type="AnimatedSprite2D" parent="DiverPath/PathFollow/MenuDiver"]
-position = Vector2(-10.6886, -10.8975)
+[node name="MenuDiverSprite" type="AnimatedSprite2D" parent="OscillatingParts/DiverPath/PathFollow/MenuDiver"]
+position = Vector2(-4.90401, -34.1899)
 rotation = 0.24342
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_bqpex")
@@ -90,7 +93,7 @@ polygon = PackedVector2Array(0, 0, 640, 0, 640, 360, 0, 360)
 script = ExtResource("7_kpwhl")
 curtainSpeed = 1.7
 
-[connection signal="doAFlip" from="StartButton" to="DiverPath/PathFollow/MenuDiver" method="_do_a_flip"]
-[connection signal="pressed" from="StartButton" to="StartButton" method="_on_pressed"]
-[connection signal="reachedEnd" from="DiverPath/PathFollow/MenuDiver" to="BlackoutCurtain" method="close"]
+[connection signal="doAFlip" from="OscillatingParts/StartButton" to="OscillatingParts/DiverPath/PathFollow/MenuDiver" method="_do_a_flip"]
+[connection signal="pressed" from="OscillatingParts/StartButton" to="OscillatingParts/StartButton" method="_on_pressed"]
+[connection signal="reachedEnd" from="OscillatingParts/DiverPath/PathFollow/MenuDiver" to="BlackoutCurtain" method="close"]
 [connection signal="changeScene" from="BlackoutCurtain" to="BlackoutCurtain" method="changeSceneToMain"]
