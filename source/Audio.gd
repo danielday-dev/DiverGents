@@ -1,10 +1,10 @@
 extends Node2D
 
-signal BeatIsHappening(beat : float)
-
+# Control for maximum volume of song
 @export var fullVolumedB : float = 0;
 @onready var currentVolumedB : float = $Music.volume_db;
 
+# get how fast the song is since it will affect enemy spawns
 @export var songBPM : int= 0;
 @onready var bps : int = songBPM * 60;
 
@@ -42,8 +42,7 @@ func _process(delta):
 	lastBeat = currentBeat
 	
 	if beatIsAboutToHappen:
-		# tell spawner to spawn if it spawns here
-		BeatIsHappening.emit(currentBeat)
+		trySpawnEnemy(currentBeat)
 
 func fadeIn(delta : float):
 	currentVolumedB = clampf(lerp( currentVolumedB, fullVolumedB, 0.1 * delta), -80, fullVolumedB)
@@ -56,3 +55,23 @@ func play():
 
 func stop_playing():
 	state = AudioState.Stopped;
+
+func startAudio():
+	play()
+	lastBeat = 0;
+	
+# Enemy spawning
+@export var spawnTimes : Array[SpawnTime];
+@export_range(0, 0.3) var beatTolerance : float = 0;
+@export var Enemies : Node2D;
+
+func trySpawnEnemy(currentBeat : float):
+	for spawnTime : SpawnTime in spawnTimes:
+		if spawnTime.spawnBeat < currentBeat and currentBeat < spawnTime.spawnBeat + beatTolerance: 
+			spawnEnemy(spawnTime.creatureType, spawnTime.lane)
+			
+func spawnEnemy(creatureType : PackedScene, laneNumber : int):
+	var enemy = creatureType.new()
+	enemy.location = Vector2((laneNumber + 0.5) * 160, 320)
+	Enemies.add_child(enemy)
+

@@ -1,7 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkpy0v2327s41"]
+[gd_scene load_steps=13 format=3 uid="uid://dkpy0v2327s41"]
 
 [ext_resource type="Script" path="res://source/Menu.gd" id="1_qbssx"]
 [ext_resource type="Shader" uid="uid://c8e8h6qb13j3a" path="res://resources/wave.tres" id="1_x4584"]
+[ext_resource type="Script" path="res://source/StartButton.gd" id="3_hifq6"]
+[ext_resource type="Texture2D" uid="uid://ce85y6vt6f551" path="res://resources/log.png" id="4_aoxpq"]
+[ext_resource type="Texture2D" uid="uid://btu65j3l1b3lu" path="res://resources/DiverSpritesheet.png" id="5_4ea4h"]
+[ext_resource type="Script" path="res://source/MenuDiver.gd" id="6_1ojvo"]
+[ext_resource type="Script" path="res://source/BlackoutCurtain.gd" id="7_kpwhl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e0j20"]
 shader = ExtResource("1_x4584")
@@ -20,6 +25,21 @@ _data = {
 }
 point_count = 4
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ff6xw"]
+atlas = ExtResource("5_4ea4h")
+region = Rect2(0, 0, 176, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bqpex"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ff6xw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_qbssx")
 waveHeight = 20.0
@@ -32,5 +52,45 @@ texture = SubResource("PlaceholderTexture2D_xtdie")
 polygon = PackedVector2Array(0, 0, 640, 0, 640, 360, 0, 360)
 uv = PackedVector2Array(0, 0, 1, 0, 1, 1, 0, 1)
 
-[node name="Path2D" type="Path2D" parent="."]
+[node name="StartButton" type="Button" parent="."]
+offset_left = 322.0
+offset_top = 207.0
+offset_right = 370.0
+offset_bottom = 244.0
+text = "Start"
+script = ExtResource("3_hifq6")
+
+[node name="Log" type="Sprite2D" parent="."]
+position = Vector2(107, 163)
+scale = Vector2(0.589249, 0.537037)
+texture = ExtResource("4_aoxpq")
+
+[node name="DiverPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_xvumd")
+
+[node name="PathFollow" type="PathFollow2D" parent="DiverPath"]
+position = Vector2(87, 126)
+rotation = -0.24342
+rotates = false
+loop = false
+
+[node name="MenuDiver" type="CharacterBody2D" parent="DiverPath/PathFollow"]
+script = ExtResource("6_1ojvo")
+
+[node name="MenuDiverSprite" type="AnimatedSprite2D" parent="DiverPath/PathFollow/MenuDiver"]
+position = Vector2(-10.6886, -10.8975)
+rotation = 0.24342
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_bqpex")
+
+[node name="BlackoutCurtain" type="Polygon2D" parent="."]
+visible = false
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, 0, 640, 0, 640, 360, 0, 360)
+script = ExtResource("7_kpwhl")
+curtainSpeed = 1.7
+
+[connection signal="doAFlip" from="StartButton" to="DiverPath/PathFollow/MenuDiver" method="_do_a_flip"]
+[connection signal="pressed" from="StartButton" to="StartButton" method="_on_pressed"]
+[connection signal="reachedEnd" from="DiverPath/PathFollow/MenuDiver" to="BlackoutCurtain" method="close"]
+[connection signal="changeScene" from="BlackoutCurtain" to="BlackoutCurtain" method="changeSceneToMain"]

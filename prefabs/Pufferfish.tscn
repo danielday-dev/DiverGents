@@ -1,43 +1,72 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4kf862awclft"]
+[gd_scene load_steps=12 format=3 uid="uid://b4kf862awclft"]
 
-[ext_resource type="Texture2D" uid="uid://d1akbtq8fbw8d" path="res://resources/DefaultTexture.png" id="1_co365"]
 [ext_resource type="Script" path="res://source/Pufferfish.gd" id="1_o7bln"]
 [ext_resource type="Shader" uid="uid://cnyw7jcl21jg" path="res://resources/PufferfishWiggle.tres" id="2_7j2qo"]
 [ext_resource type="Script" path="res://source/FishHitbox.gd" id="2_hbsjo"]
+[ext_resource type="Texture2D" uid="uid://ly88yxaxwmp3" path="res://resources/PufferfishSpritesheet.png" id="3_mr3t7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1fbfp"]
 shader = ExtResource("2_7j2qo")
 shader_parameter/Wavelength = 0.7
 shader_parameter/Height = 3.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0ota"]
+atlas = ExtResource("3_mr3t7")
+region = Rect2(0, 0, 289, 227)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ec1w2"]
+atlas = ExtResource("3_mr3t7")
+region = Rect2(289, 0, 289, 227)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61t1l"]
+atlas = ExtResource("3_mr3t7")
+region = Rect2(578, 0, 289, 227)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_w202p"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_co365")
+"texture": SubResource("AtlasTexture_d0ota")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ec1w2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61t1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ec1w2")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fgh2k"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kqucd"]
+size = Vector2(25.1502, 32.7318)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pjsgq"]
 
 [node name="Pufferfish" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_o7bln")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_1fbfp")
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_w202p")
+frame_progress = 0.953049
 
 [node name="FishHitbox" type="Area2D" parent="."]
+scale = Vector2(1.27312, 1.28171)
 script = ExtResource("2_hbsjo")
 
 [node name="Hitbox" type="CollisionShape2D" parent="FishHitbox"]
-shape = SubResource("CapsuleShape2D_fgh2k")
+position = Vector2(8.32854, 7.28105e-07)
+rotation = -3.14159
+scale = Vector2(3.23429, -1.67727)
+shape = SubResource("RectangleShape2D_kqucd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_pjsgq")

@@ -2,14 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://bx8sp17yn608h" path="res://prefabs/Diver.tscn" id="1_v5l4s"]
 [ext_resource type="Script" path="res://source/Audio.gd" id="2_nyn1x"]
-[ext_resource type="Script" path="res://source/Spawner.gd" id="3_lnriq"]
 [ext_resource type="Script" path="res://resources/SpawnTime.gd" id="4_j086n"]
+[ext_resource type="Script" path="res://source/BlackoutCurtain.gd" id="5_1r4ce"]
 [ext_resource type="PackedScene" uid="uid://b4kf862awclft" path="res://prefabs/Pufferfish.tscn" id="5_scsin"]
 
-[sub_resource type="Resource" id="Resource_hvmv2"]
+[sub_resource type="Resource" id="Resource_myhbk"]
 script = ExtResource("4_j086n")
-spawnBeat = 1.0
-lane = 1
+creatureType = ExtResource("5_scsin")
+spawnBeat = 0.0
+lane = 0
 
 [node name="Main" type="Node2D"]
 
@@ -19,24 +20,46 @@ lane = 1
 color = Color(0.156863, 0.658824, 1, 1)
 polygon = PackedVector2Array(0, 0, 640, 0, 640, 360, 0, 360)
 
-[node name="Audio" type="Node2D" parent="."]
+[node name="AudioController" type="Node2D" parent="." node_paths=PackedStringArray("Enemies")]
 script = ExtResource("2_nyn1x")
+spawnTimes = Array[ExtResource("4_j086n")]([SubResource("Resource_myhbk")])
+beatTolerance = 0.08
+Enemies = NodePath("../Enemies")
 
-[node name="Music" type="AudioStreamPlayer" parent="Audio"]
-
-[node name="Spawner" type="Node2D" parent="."]
-script = ExtResource("3_lnriq")
-spawnTimes = Array[ExtResource("4_j086n")]([SubResource("Resource_hvmv2")])
+[node name="Music" type="AudioStreamPlayer" parent="AudioController"]
 
 [node name="Pufferfish" parent="." instance=ExtResource("5_scsin")]
-position = Vector2(207, 82)
-scale = Vector2(5, 5)
+position = Vector2(72, 278)
 
-[node name="Lanes" type="Node2D" parent="."]
+[node name="Divers" type="Node2D" parent="."]
 
-[node name="Lane1" type="Node2D" parent="Lanes"]
-
-[node name="Diver" parent="Lanes/Lane1" instance=ExtResource("1_v5l4s")]
+[node name="Diver1" parent="Divers" node_paths=PackedStringArray("nextDiver") instance=ExtResource("1_v5l4s")]
+position = Vector2(80, -60)
 inputName = "diver1_attack"
+nextDiver = NodePath("../Diver2")
 
-[connection signal="BeatIsHappening" from="Audio" to="Spawner" method="trySpawnEnemy"]
+[node name="Diver2" parent="Divers" node_paths=PackedStringArray("nextDiver") instance=ExtResource("1_v5l4s")]
+position = Vector2(240, -60)
+inputName = "diver2_attack"
+nextDiver = NodePath("../Diver3")
+
+[node name="Diver3" parent="Divers" node_paths=PackedStringArray("nextDiver") instance=ExtResource("1_v5l4s")]
+position = Vector2(400, -60)
+inputName = "diver3_attack"
+nextDiver = NodePath("../Diver4")
+
+[node name="Diver4" parent="Divers" instance=ExtResource("1_v5l4s")]
+position = Vector2(560, -60)
+inputName = "diver4_attack"
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="BlackoutCurtain" type="Polygon2D" parent="."]
+visible = false
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, 0, 640, 0, 640, 360, 0, 360)
+script = ExtResource("5_1r4ce")
+curtainSpeed = 1.7
+
+[connection signal="changeScene" from="BlackoutCurtain" to="BlackoutCurtain" method="changeSceneToMenu"]
+[connection signal="startDivingMovement" from="BlackoutCurtain" to="Divers/Diver1" method="startMoveToRestPosition"]

@@ -39,15 +39,17 @@ animations = [{
 }]
 
 [node name="Diver" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_c1fay")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(-0.303575, 0.499997)
 scale = Vector2(1.02143, 0.833333)
 shape = SubResource("RectangleShape2D_w7yjp")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_rn7jm")
+autoplay = "default"
 frame_progress = 0.479504
 
 [node name="AttackNoise" type="AudioStreamPlayer" parent="."]

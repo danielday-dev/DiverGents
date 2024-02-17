@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqqf0fl3h6pu5"]
+
+[ext_resource type="Script" path="res://source/Lane.gd" id="1_pubek"]
+[ext_resource type="PackedScene" uid="uid://bx8sp17yn608h" path="res://prefabs/Diver.tscn" id="2_wewan"]
+
+[node name="Lane" type="Node2D"]
+script = ExtResource("1_pubek")
+
+[node name="Diver" parent="." instance=ExtResource("2_wewan")]
