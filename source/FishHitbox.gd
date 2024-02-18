@@ -1,11 +1,14 @@
 extends Area2D
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func collidedWithPlayer(body : Node2D):
+	
+	set_collision_mask(0);
+	
+	# If player hits fish
+	#if body.checkIfPlayerIsAttacking() and get_parent().get_parent().checkIsOnBeat():
+	
+	if body.checkIfPlayerIsAttacking():
+		get_parent().spinIntoOblivion()
+		$bonk.play()
+	# If player doesnt hit fish, fish moves off and thats it
+	

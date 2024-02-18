@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dkpy0v2327s41"]
+[gd_scene load_steps=14 format=3 uid="uid://dkpy0v2327s41"]
 
 [ext_resource type="Script" path="res://source/Menu.gd" id="1_qbssx"]
 [ext_resource type="Shader" uid="uid://c8e8h6qb13j3a" path="res://resources/wave.tres" id="1_x4584"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://btu65j3l1b3lu" path="res://resources/DiverSpritesheet.png" id="5_4ea4h"]
 [ext_resource type="Script" path="res://source/MenuDiver.gd" id="6_1ojvo"]
 [ext_resource type="Script" path="res://source/BlackoutCurtain.gd" id="7_kpwhl"]
+[ext_resource type="AudioStream" uid="uid://bnxtlpv8mojoq" path="res://resources/OceanNoises.wav" id="8_3j2un"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e0j20"]
 shader = ExtResource("1_x4584")
@@ -92,6 +93,11 @@ color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(0, 0, 640, 0, 640, 360, 0, 360)
 script = ExtResource("7_kpwhl")
 curtainSpeed = 1.7
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_3j2un")
+volume_db = -15.0
+autoplay = true
 
 [connection signal="doAFlip" from="OscillatingParts/StartButton" to="OscillatingParts/DiverPath/PathFollow/MenuDiver" method="_do_a_flip"]
 [connection signal="pressed" from="OscillatingParts/StartButton" to="OscillatingParts/StartButton" method="_on_pressed"]

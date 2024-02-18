@@ -1,10 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://bx8sp17yn608h"]
+[gd_scene load_steps=11 format=3 uid="uid://bx8sp17yn608h"]
 
 [ext_resource type="Script" path="res://source/Diver.gd" id="1_c1fay"]
+[ext_resource type="Texture2D" uid="uid://csfb38axc77yo" path="res://resources/DiverAttackSpritesheet.png" id="2_6knr1"]
 [ext_resource type="Texture2D" uid="uid://btu65j3l1b3lu" path="res://resources/DiverSpritesheet.png" id="2_e0hld"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w7yjp"]
 size = Vector2(153.322, 255.6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xl6vh"]
+atlas = ExtResource("2_6knr1")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csg7g"]
+atlas = ExtResource("2_6knr1")
+region = Rect2(0, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2syej"]
 atlas = ExtResource("2_e0hld")
@@ -22,6 +31,26 @@ region = Rect2(528, 0, 176, 256)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_xl6vh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_csg7g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xl6vh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_csg7g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xl6vh")
+}],
+"loop": false,
+"name": &"attacking",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_2syej")
 }, {
 "duration": 1.0,
@@ -34,22 +63,26 @@ animations = [{
 "texture": SubResource("AtlasTexture_r067n")
 }],
 "loop": true,
-"name": &"default",
+"name": &"swimming",
 "speed": 4.0
 }]
 
 [node name="Diver" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
+collision_layer = 3
+collision_mask = 0
 script = ExtResource("1_c1fay")
+restingY = 130.0
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
-position = Vector2(-0.303575, 0.499997)
+position = Vector2(0, -107.5)
 scale = Vector2(1.02143, 0.833333)
 shape = SubResource("RectangleShape2D_w7yjp")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -108)
 sprite_frames = SubResource("SpriteFrames_rn7jm")
-autoplay = "default"
-frame_progress = 0.479504
+animation = &"attacking"
+autoplay = "swimming"
 
 [node name="AttackNoise" type="AudioStreamPlayer" parent="."]

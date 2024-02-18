@@ -15,7 +15,7 @@ var state : DiverState = DiverState.Waiting
 @export var restingY : float = 70;
 @onready var restingPosition : Vector2 = Vector2(position.x, restingY)
 @export var nextDiver : Diver;
-@export var swimSpeed : float = 30;
+@export var swimSpeed : float = 50;
 @onready var isLast : bool = nextDiver == null;
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -29,13 +29,15 @@ func _physics_process(delta):
 			if position == restingPosition:
 				tellNextDiverToCome()
 				state = DiverState.Swimming
-				
 			
 		DiverState.Swimming:
+			setAnimation("swimming")
 			if diver_attack:
 				attackPressed()
 		DiverState.Attacking:
-			pass
+			setAnimation("attacking")
+			if animationEnded():
+				state = DiverState.Swimming
 			
 	move_and_slide()
 	
@@ -52,3 +54,14 @@ func tellNextDiverToCome():
 		
 func startMoveToRestPosition():
 	state = DiverState.MovingToStart
+
+func checkIfPlayerIsAttacking():
+	return state == DiverState.Attacking;
+	
+func setAnimation(animation : String):
+	if $Sprite.get_animation() != animation:
+		$Sprite.play(animation)
+
+func animationEnded():
+	return $Sprite.frame_progress >= 1.0
+
