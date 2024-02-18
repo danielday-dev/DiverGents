@@ -1,30 +1,373 @@
-[gd_scene load_steps=11 format=3 uid="uid://drtekcwtpj24x"]
+[gd_scene load_steps=67 format=3 uid="uid://drtekcwtpj24x"]
 
 [ext_resource type="PackedScene" uid="uid://bx8sp17yn608h" path="res://prefabs/Diver.tscn" id="1_v5l4s"]
 [ext_resource type="PackedScene" uid="uid://cqm2o4de7gtup" path="res://prefabs/Floor.tscn" id="2_hkjto"]
 [ext_resource type="Script" path="res://source/Audio.gd" id="2_nyn1x"]
-[ext_resource type="AudioStream" uid="uid://2ybhkkccjkqh" path="res://resources/OceanGents.wav" id="4_885ra"]
+[ext_resource type="AudioStream" path="res://resources/OceanGents.wav" id="4_885ra"]
 [ext_resource type="Script" path="res://resources/SpawnTime.gd" id="4_j086n"]
 [ext_resource type="Script" path="res://source/BlackoutCurtain.gd" id="5_1r4ce"]
 [ext_resource type="PackedScene" uid="uid://b4kf862awclft" path="res://prefabs/Pufferfish.tscn" id="5_scsin"]
+[ext_resource type="Texture2D" uid="uid://dql2g0m2ydy7x" path="res://resources/letterSpritesheet.png" id="7_gpwbs"]
 
 [sub_resource type="Resource" id="Resource_myhbk"]
 script = ExtResource("4_j086n")
 creatureType = ExtResource("2_hkjto")
-spawnBeat = 10
+spawnBeat = 112
 lane = 2
 
 [sub_resource type="Resource" id="Resource_f2ma0"]
 script = ExtResource("4_j086n")
 creatureType = ExtResource("5_scsin")
-spawnBeat = 5
+spawnBeat = 16
 lane = 0
 
 [sub_resource type="Resource" id="Resource_16jha"]
 script = ExtResource("4_j086n")
 creatureType = ExtResource("5_scsin")
-spawnBeat = 7
+spawnBeat = 18
 lane = 2
+
+[sub_resource type="Resource" id="Resource_ytbs8"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 20
+lane = 3
+
+[sub_resource type="Resource" id="Resource_useg5"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 22
+lane = 2
+
+[sub_resource type="Resource" id="Resource_0l47a"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 26
+lane = 2
+
+[sub_resource type="Resource" id="Resource_yf06g"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 30
+lane = 0
+
+[sub_resource type="Resource" id="Resource_ipl85"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 32
+lane = 0
+
+[sub_resource type="Resource" id="Resource_l8g8o"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 34
+lane = 1
+
+[sub_resource type="Resource" id="Resource_f5owk"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 36
+lane = 3
+
+[sub_resource type="Resource" id="Resource_2v3dp"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 38
+lane = 3
+
+[sub_resource type="Resource" id="Resource_00xwd"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 40
+lane = 1
+
+[sub_resource type="Resource" id="Resource_idkvu"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 42
+lane = 1
+
+[sub_resource type="Resource" id="Resource_5vyqp"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 44
+lane = 2
+
+[sub_resource type="Resource" id="Resource_33jmy"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 46
+lane = 2
+
+[sub_resource type="Resource" id="Resource_bcd1p"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 48
+lane = 1
+
+[sub_resource type="Resource" id="Resource_8ycgp"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 48
+lane = 2
+
+[sub_resource type="Resource" id="Resource_t6c04"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 50
+lane = 1
+
+[sub_resource type="Resource" id="Resource_6uf88"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 50
+lane = 2
+
+[sub_resource type="Resource" id="Resource_w6d8j"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 52
+lane = 1
+
+[sub_resource type="Resource" id="Resource_71qu5"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 52
+lane = 0
+
+[sub_resource type="Resource" id="Resource_btg0y"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 54
+lane = 1
+
+[sub_resource type="Resource" id="Resource_gusal"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 54
+lane = 0
+
+[sub_resource type="Resource" id="Resource_cgk78"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 56
+lane = 0
+
+[sub_resource type="Resource" id="Resource_0ayxu"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 56
+lane = 3
+
+[sub_resource type="Resource" id="Resource_hs8ql"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 58
+lane = 0
+
+[sub_resource type="Resource" id="Resource_jdvy0"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 58
+lane = 3
+
+[sub_resource type="Resource" id="Resource_0mm3d"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 60
+lane = 1
+
+[sub_resource type="Resource" id="Resource_ss0gj"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 60
+lane = 3
+
+[sub_resource type="Resource" id="Resource_x21ar"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 62
+lane = 1
+
+[sub_resource type="Resource" id="Resource_f217i"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 62
+lane = 3
+
+[sub_resource type="Resource" id="Resource_6qce6"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 72
+lane = 0
+
+[sub_resource type="Resource" id="Resource_l1br3"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 74
+lane = 1
+
+[sub_resource type="Resource" id="Resource_larn0"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 76
+lane = 0
+
+[sub_resource type="Resource" id="Resource_pk330"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 78
+lane = 1
+
+[sub_resource type="Resource" id="Resource_46lti"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 80
+lane = 2
+
+[sub_resource type="Resource" id="Resource_fc688"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 82
+lane = 3
+
+[sub_resource type="Resource" id="Resource_m6myc"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 84
+lane = 2
+
+[sub_resource type="Resource" id="Resource_y83mo"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 86
+lane = 3
+
+[sub_resource type="Resource" id="Resource_sbhhm"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 88
+lane = 0
+
+[sub_resource type="Resource" id="Resource_tut3a"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 90
+lane = 2
+
+[sub_resource type="Resource" id="Resource_yve4d"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 92
+lane = 0
+
+[sub_resource type="Resource" id="Resource_n4aoq"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 94
+lane = 2
+
+[sub_resource type="Resource" id="Resource_k7suo"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 96
+lane = 0
+
+[sub_resource type="Resource" id="Resource_0dbhq"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 98
+lane = 3
+
+[sub_resource type="Resource" id="Resource_mtnjg"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 100
+lane = 2
+
+[sub_resource type="Resource" id="Resource_jl3tp"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 102
+lane = 0
+
+[sub_resource type="Resource" id="Resource_7gwe5"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 102
+lane = 1
+
+[sub_resource type="Resource" id="Resource_hvih5"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 102
+lane = 2
+
+[sub_resource type="Resource" id="Resource_3v1mn"]
+script = ExtResource("4_j086n")
+creatureType = ExtResource("5_scsin")
+spawnBeat = 102
+lane = 3
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4ly5"]
+atlas = ExtResource("7_gpwbs")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_83450"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4ly5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v07me"]
+atlas = ExtResource("7_gpwbs")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k644w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v07me")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwvkw"]
+atlas = ExtResource("7_gpwbs")
+region = Rect2(400, 0, 200, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i8lp4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwvkw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62dwf"]
+atlas = ExtResource("7_gpwbs")
+region = Rect2(600, 0, 200, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_shp68"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62dwf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Main" type="Node2D"]
 
@@ -37,7 +380,7 @@ polygon = PackedVector2Array(0, 0, 640, 0, 640, 360, 0, 360)
 [node name="AudioController" type="Node2D" parent="."]
 script = ExtResource("2_nyn1x")
 fadeSpeed = 10.0
-spawnTimes = Array[ExtResource("4_j086n")]([SubResource("Resource_myhbk"), SubResource("Resource_f2ma0"), SubResource("Resource_16jha")])
+spawnTimes = Array[ExtResource("4_j086n")]([SubResource("Resource_myhbk"), SubResource("Resource_f2ma0"), SubResource("Resource_16jha"), SubResource("Resource_ytbs8"), SubResource("Resource_useg5"), SubResource("Resource_0l47a"), SubResource("Resource_yf06g"), SubResource("Resource_ipl85"), SubResource("Resource_l8g8o"), SubResource("Resource_f5owk"), SubResource("Resource_2v3dp"), SubResource("Resource_00xwd"), SubResource("Resource_idkvu"), SubResource("Resource_5vyqp"), SubResource("Resource_33jmy"), SubResource("Resource_bcd1p"), SubResource("Resource_8ycgp"), SubResource("Resource_t6c04"), SubResource("Resource_6uf88"), SubResource("Resource_w6d8j"), SubResource("Resource_71qu5"), SubResource("Resource_btg0y"), SubResource("Resource_gusal"), SubResource("Resource_cgk78"), SubResource("Resource_0ayxu"), SubResource("Resource_hs8ql"), SubResource("Resource_jdvy0"), SubResource("Resource_0mm3d"), SubResource("Resource_ss0gj"), SubResource("Resource_x21ar"), SubResource("Resource_f217i"), SubResource("Resource_6qce6"), SubResource("Resource_l1br3"), SubResource("Resource_larn0"), SubResource("Resource_pk330"), SubResource("Resource_46lti"), SubResource("Resource_fc688"), SubResource("Resource_m6myc"), SubResource("Resource_y83mo"), SubResource("Resource_sbhhm"), SubResource("Resource_tut3a"), SubResource("Resource_yve4d"), SubResource("Resource_n4aoq"), SubResource("Resource_k7suo"), SubResource("Resource_0dbhq"), SubResource("Resource_mtnjg"), SubResource("Resource_jl3tp"), SubResource("Resource_7gwe5"), SubResource("Resource_hvih5"), SubResource("Resource_3v1mn")])
 beatsToPlayer = 8.0
 
 [node name="Music" type="AudioStreamPlayer" parent="AudioController"]
@@ -47,31 +390,51 @@ volume_db = -30.0
 [node name="Divers" type="Node2D" parent="."]
 
 [node name="Diver1" parent="Divers" node_paths=PackedStringArray("nextDiver") instance=ExtResource("1_v5l4s")]
-position = Vector2(80, -60)
+position = Vector2(80, -17)
 inputName = "diver1_attack"
 nextDiver = NodePath("../Diver2")
 
+[node name="U" type="AnimatedSprite2D" parent="Divers/Diver1"]
+position = Vector2(-96, -116)
+scale = Vector2(0.38, 0.46)
+sprite_frames = SubResource("SpriteFrames_83450")
+
 [node name="Diver2" parent="Divers" node_paths=PackedStringArray("nextDiver") instance=ExtResource("1_v5l4s")]
-position = Vector2(240, -60)
+position = Vector2(240, -17)
 inputName = "diver2_attack"
 nextDiver = NodePath("../Diver3")
 
+[node name="I" type="AnimatedSprite2D" parent="Divers/Diver2"]
+position = Vector2(-88, -118)
+scale = Vector2(0.36, 0.38)
+sprite_frames = SubResource("SpriteFrames_k644w")
+
 [node name="Diver3" parent="Divers" node_paths=PackedStringArray("nextDiver") instance=ExtResource("1_v5l4s")]
-position = Vector2(400, -60)
+position = Vector2(400, -17)
 inputName = "diver3_attack"
 nextDiver = NodePath("../Diver4")
 
+[node name="O" type="AnimatedSprite2D" parent="Divers/Diver3"]
+position = Vector2(-82, -122)
+scale = Vector2(0.34, 0.34)
+sprite_frames = SubResource("SpriteFrames_i8lp4")
+
 [node name="Diver4" parent="Divers" instance=ExtResource("1_v5l4s")]
-position = Vector2(560, -60)
+position = Vector2(560, -17)
 inputName = "diver4_attack"
+
+[node name="P" type="AnimatedSprite2D" parent="Divers/Diver4"]
+position = Vector2(-82, -116)
+scale = Vector2(0.35, 0.29)
+sprite_frames = SubResource("SpriteFrames_shp68")
 
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="BlackoutCurtain" type="Polygon2D" parent="."]
-visible = false
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(0, 0, 640, 0, 640, 360, 0, 360)
 script = ExtResource("5_1r4ce")
+menuScene = "res://scenes/Menu.tscn"
 curtainSpeed = 1.7
 
 [connection signal="changeScene" from="BlackoutCurtain" to="BlackoutCurtain" method="changeSceneToMenu"]

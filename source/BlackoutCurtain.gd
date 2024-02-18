@@ -1,5 +1,8 @@
 extends Polygon2D
 
+@export_file("*.tscn") var mainScene : String;
+@export_file("*.tscn") var menuScene : String;
+
 signal startDivingMovement
 signal changeScene
 
@@ -43,7 +46,7 @@ func close():
 	state = CurtainState.Closing;
 
 func changeSceneToMain():
-	get_tree().change_scene_to_file("res://scenes/Main.tscn")
+	get_tree().change_scene_to_file(mainScene)
 
 func changeSceneToMenu():
-	get_tree().change_scene_to_file("res://scenes/Menu.tscn")
+	get_tree().change_scene_to_file(menuScene)

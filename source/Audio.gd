@@ -47,7 +47,7 @@ func _process(delta):
 		
 		lastBeat = currentBeat
 		
-		print(time," ", currentBeat, " ", currentVolumedB)
+		#print(time," ", currentBeat, " ", currentVolumedB)
 
 func fadeIn(delta : float):
 	currentVolumedB = clampf(currentVolumedB + fadeSpeed * delta, -80, fullVolumedB)
@@ -72,7 +72,7 @@ func stop_playing():
 
 func startAudio():
 	play()
-	lastBeat = -1;
+	lastBeat = -beatsToPlayer;
 
 func checkIsOnBeat():
 	return beatIsAboutToHappen
@@ -82,12 +82,12 @@ func checkIsOnBeat():
 
 func trySpawnEnemy(currentBeat : int):
 	for spawnTime : SpawnTime in spawnTimes:
-		if spawnTime.spawnBeat <= currentBeat and spawnTime.spawnBeat > lastBeat: 
+		if spawnTime.spawnBeat -beatsToPlayer <= currentBeat and spawnTime.spawnBeat -beatsToPlayer > lastBeat: 
 			spawnEnemy(spawnTime.creatureType, spawnTime.lane)
 			
 func spawnEnemy(creatureType : PackedScene, laneNumber : int):
 	var enemy = creatureType.instantiate()
-	enemy.position = Vector2((laneNumber + 0.5) * 160, 320)
+	enemy.position = Vector2((laneNumber + 0.5) * 160, 360)
 	
 	const player_position = 130
 	enemy.moveSpeed = (player_position - enemy.global_position.y) * (bps / beatsToPlayer)

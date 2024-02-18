@@ -51,7 +51,7 @@ loop_end = 90112
 stereo = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qsvpt"]
-size = Vector2(25.1502, 32.7318)
+size = Vector2(25.1502, 41.8337)
 
 [node name="Pufferfish" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
@@ -80,7 +80,7 @@ stream = SubResource("AudioStreamWAV_wmyr4")
 volume_db = -20.0
 
 [node name="Hitbox" type="CollisionShape2D" parent="Fish_Hitbox"]
-position = Vector2(0, 34.75)
+position = Vector2(2.48031e-05, 24.9665)
 rotation = -3.14159
 scale = Vector2(4.11764, -2.14977)
 shape = SubResource("RectangleShape2D_qsvpt")
