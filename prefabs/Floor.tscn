@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqm2o4de7gtup"]
+
+[ext_resource type="Script" path="res://source/Floor.gd" id="1_5lo47"]
+[ext_resource type="Texture2D" uid="uid://bflcnsgi3gihw" path="res://resources/groundSprite.png" id="1_6vt6t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ls6my"]
+size = Vector2(331.034, 504)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6a0m4"]
+size = Vector2(20, 10)
+
+[node name="Floor" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_5lo47")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(7.62939e-06, 580)
+scale = Vector2(3, 1)
+shape = SubResource("RectangleShape2D_ls6my")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_6a0m4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 424)
+scale = Vector2(1.90786, 2.29444)
+texture = ExtResource("1_6vt6t")
+
+[connection signal="body_entered" from="Area2D" to="." method="collidedWithPlayer"]

@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://cocnu63lfir0m"]
+
+[ext_resource type="Script" path="res://source/YouWinButton.gd" id="1_87lk6"]
+[ext_resource type="Texture2D" uid="uid://btu65j3l1b3lu" path="res://resources/DiverSpritesheet.png" id="2_61m1j"]
+[ext_resource type="Texture2D" uid="uid://ly88yxaxwmp3" path="res://resources/PufferfishSpritesheet.png" id="3_ycru6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p75fy"]
+atlas = ExtResource("2_61m1j")
+region = Rect2(0, 0, 176, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7sayj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p75fy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kq7oa"]
+atlas = ExtResource("3_ycru6")
+region = Rect2(289, 0, 289, 227)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_88asr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kq7oa")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="WinScreen" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 656.0
+offset_bottom = 384.0
+color = Color(0.203922, 0.658824, 1, 1)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 296.0
+offset_top = 192.0
+offset_right = 349.0
+offset_bottom = 223.0
+text = "Menu"
+script = ExtResource("1_87lk6")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 288.0
+offset_top = 152.0
+offset_right = 400.0
+offset_bottom = 208.0
+text = "You Win!"
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(520, 152)
+sprite_frames = SubResource("SpriteFrames_7sayj")
+
+[node name="Sprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(104, 160)
+sprite_frames = SubResource("SpriteFrames_88asr")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
