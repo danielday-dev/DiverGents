@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://bx8sp17yn608h" path="res://prefabs/Diver.tscn" id="1_v5l4s"]
 [ext_resource type="PackedScene" uid="uid://cqm2o4de7gtup" path="res://prefabs/Floor.tscn" id="2_hkjto"]
 [ext_resource type="Script" path="res://source/Audio.gd" id="2_nyn1x"]
-[ext_resource type="AudioStream" path="res://resources/OceanGents.wav" id="4_885ra"]
 [ext_resource type="Script" path="res://resources/SpawnTime.gd" id="4_j086n"]
 [ext_resource type="Script" path="res://source/BlackoutCurtain.gd" id="5_1r4ce"]
+[ext_resource type="AudioStream" uid="uid://2ybhkkccjkqh" path="res://resources/OceanGents.wav" id="5_2h1pr"]
 [ext_resource type="PackedScene" uid="uid://b4kf862awclft" path="res://prefabs/Pufferfish.tscn" id="5_scsin"]
 [ext_resource type="Texture2D" uid="uid://dql2g0m2ydy7x" path="res://resources/letterSpritesheet.png" id="7_gpwbs"]
 
@@ -384,7 +384,7 @@ spawnTimes = Array[ExtResource("4_j086n")]([SubResource("Resource_myhbk"), SubRe
 beatsToPlayer = 8.0
 
 [node name="Music" type="AudioStreamPlayer" parent="AudioController"]
-stream = ExtResource("4_885ra")
+stream = ExtResource("5_2h1pr")
 volume_db = -30.0
 
 [node name="Divers" type="Node2D" parent="."]

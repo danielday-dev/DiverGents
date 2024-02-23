@@ -19,7 +19,7 @@ var state : DiverState = DiverState.Waiting
 @onready var isLast : bool = nextDiver == null;
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	var diver_attack : bool = Input.is_action_pressed(inputName);
+	var diver_attack : bool = Input.is_action_just_pressed(inputName);
 	
 	match state:
 		DiverState.Waiting:
